@@ -1,5 +1,5 @@
-[USERNAME]
+TGIChatBot
 irc.chat.twitch.tv
 6667
-#[CHANNEL NAME]
-[OAUTH PASSWORD]
+#void_nullptr
+oauth:1klswaqpqyv6jv7gsa4yxwt0liulyk
