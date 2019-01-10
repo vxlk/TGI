@@ -1,0 +1,5 @@
+TGIChatBot
+irc.chat.twitch.tv
+6667
+#void_nullptr
+oauth:1klswaqpqyv6jv7gsa4yxwt0liulyk
