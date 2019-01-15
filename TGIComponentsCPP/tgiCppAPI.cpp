@@ -33,6 +33,9 @@ TGICppAPI_WIN::TGICppAPI_WIN()
 		data.setFilePath(path);
 	}
 	initFile.close();
+
+	//init generator
+	this->generator = new TGITypeGenerator();
 }
 
 /// CloseHandle( pi.hProcess ); to close

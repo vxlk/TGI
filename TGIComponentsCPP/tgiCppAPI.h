@@ -47,10 +47,10 @@ private:
 	STARTUPINFO si;
 	PROCESS_INFORMATION pi;
 
-	/* TGI Components */
+	/* TGI Components */ ///make these pointers
 	TGIDataHandler   data;
 	ConfigEditor     config;
-	TGITypeGenerator generator;
+	TGITypeGenerator* generator;
 };
 
 #endif

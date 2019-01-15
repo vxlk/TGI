@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 ///do you need to cast in the type class or the generator
 
@@ -35,6 +36,7 @@ private:
 class TGITypeGenerator
 {
 public:
+	TGITypeGenerator();
 	void createType(const std::string& commandName);
 
 	/*
@@ -50,4 +52,5 @@ private:
 	//TGIType* castToChildType(TGIType* base, const std::string& commandName);
 	void createCPPFile(const std::string& commandName);
 	bool canCreateCommand(const std::string& commandName);
+	std::string createClassNameForCommand(const std::string& commandName);
 };

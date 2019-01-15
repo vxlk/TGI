@@ -33,6 +33,9 @@
     <ClCompile Include="configEditor.cpp">
       <Filter>Source Files\Private</Filter>
     </ClCompile>
+    <ClCompile Include="tgiType.cpp">
+      <Filter>Source Files\Private</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tgiCppAPI.h">
@@ -45,6 +48,9 @@
       <Filter>Source Files\Public</Filter>
     </ClInclude>
     <ClInclude Include="configEditor.h">
+      <Filter>Source Files\Public</Filter>
+    </ClInclude>
+    <ClInclude Include="tgiGeneratedTypes.h">
       <Filter>Source Files\Public</Filter>
     </ClInclude>
   </ItemGroup>
