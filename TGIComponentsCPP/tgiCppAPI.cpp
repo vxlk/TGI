@@ -42,7 +42,7 @@ TGICppAPI_WIN::TGICppAPI_WIN()
 
 TGIStatus TGICppAPI_WIN::startPoll()
 {
-	std::string botPath = data.getFilePath() + "\\TGIChatBot.exe";
+	std::string botPath = data.getFilePathString() + "\\TGIChatBot.exe";
 
 	//init process structures
 	ZeroMemory(&si, sizeof(si));
@@ -68,6 +68,10 @@ TGIStatus TGICppAPI_WIN::startPoll()
 	))
 	{
 		isRunning = true;
+
+		//instantiate a watcher over the chat log
+		data.checkChatLogForChange();
+
 		if (!checkForChannelConnection())
 			return ChannelNotFound;
 		return OpenSuccess;
@@ -120,5 +124,24 @@ bool TGICppAPI_WIN::checkForChannelConnection()
 	if (logFileInMemory.find(CHANNEL_CONNECTION) != logFileInMemory.npos)
 		return true;
 	return false;
+}
+
+TGIStatus TGICppAPI_WIN::addCommand(const std::string& toBeAdded)
+{
+	return CloseSuccess;
+}
+
+void TGICppAPI_WIN::runCommands()
+{
+	//loop through loop and types and do what u need to do
+}
+
+TGIStatus TGICppAPI_WIN::update()
+{
+	if (isRunning)
+	{
+		if (data.checkChatLogForChange())
+			runCommands();
+	}
 }
 #endif

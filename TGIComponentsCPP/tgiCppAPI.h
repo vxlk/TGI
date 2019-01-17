@@ -1,8 +1,13 @@
 #pragma once
 
-#include "tgiDataHandler.h"
 #include "configEditor.h"
-#include "tgiType.h"
+#include "tgiVector.h"
+
+
+#ifdef _WIN32
+#define TGI_WIN 1
+#include <Windows.h>
+#endif
 
 #define CHANNEL_CONNECTION "Recieved USERSTATE Command:"
 
@@ -16,10 +21,9 @@ enum TGIStatus
 	ChannelNotFound
 };
 
-#ifdef _WIN32
-#include <Windows.h>
-#define TGI_WIN 1
+#ifdef TGI_WIN
 
+///needs 3 rule
 //figure out a way to check if userstate is received
 //after the bot has fully run .. 
 //scan log file, if Recieved USERSTATE Command: is not in the file, then we did not connect to the file, throw an error
@@ -42,6 +46,10 @@ private:
 
 	void clearLogFile();
 	bool checkForChannelConnection();
+	void runCommands();
+
+	/*Info about each command*/
+	tgiVector<TGIType*> types;
 
 	/*Info about the bot process*/
 	STARTUPINFO si;

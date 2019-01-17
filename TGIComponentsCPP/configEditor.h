@@ -1,6 +1,6 @@
 #pragma once
 
-#include "tgiDataHandler.h"
+#include "tgiType.h"
 
 #define CHANNEL_NAME_POS_IN_FILE 3
 

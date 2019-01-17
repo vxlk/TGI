@@ -2,7 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <algorithm>
-#include <iostream>
+#include <sstream>
 
 /*
 Generator Functions
@@ -14,8 +14,6 @@ TGITypeGenerator::TGITypeGenerator()
 	//generate the class name for each
 	//if it doesnt exist in the file -> make it
 	//if it does exist, skip it
-	std::ifstream commands;
-	commands.open("Commands.txt");
 	std::ifstream generatedFile;
 	generatedFile.open("tgiGeneratedTypes.h");
 
@@ -25,12 +23,13 @@ TGITypeGenerator::TGITypeGenerator()
 	while (std::getline(generatedFile, buffer))
 		generatedFileString += buffer;
 
+	std::stringstream commands(commandListInterface.getUpdatedCommandListString());
 	//if the class does not already exist for the command, make it
 	while (std::getline(commands, buffer))
 		if (generatedFileString.find(createClassNameForCommand(buffer)) == generatedFileString.npos)
 			createCPPFile(buffer);
 
-	commands.close();
+	commands.clear();
 	generatedFile.close();
 }
 
@@ -51,6 +50,22 @@ void TGITypeGenerator::createCPPFile(const std::string& commandName)
 	std::string currentLine = "";
 	while (std::getline(generatedFile, currentLine))
 		fileString.push_back(currentLine + "\n");
+
+	//if the beginning contents dont match ... append this
+#if 0
+	
+#pragma once
+/* This is the file that contains all of the custom code for a chat function
+ ********************** THIS FILE IS AUTO-GENERATED ******************************
+						ANY CODE WRITTEN OUTSIDE OF					  
+						DESIGNATED AREAS IS PRONE TO
+ *********************		   DELETION           ********************************
+ */
+#include "TGIType.h"
+
+ /*Below is each custom "Type"*/
+
+#endif
 
 	//reset file pointer back to beginning
 	generatedFile.clear();
@@ -81,13 +96,16 @@ private:
 	*/
 	std::string classContentsString
 	(
-		"class " + className + "\n" +
+		"class " + className + " : protected TGIType " + "\n" +
 		"{\n" +
 		"public:\n\t" +
+		className + "() \n\t{\n" +
+		"\t\tname = \"\";\n\t" +
+		"}\n\t" +
 		className + "(const std::string& _name)" +
 		"\n\t{\n" +
 		"\t\tname = _name;\n" +
-		"\t\tcastString = dynamic_cast<TGIType>(" + className + ");\n\t}\n" +
+		"\t\t//castString = dynamic_cast<TGIType>(" + className + ");\n\t}\n" +
 		"\tvirtual TGIType* castToChildType(TGIType* typeToBeCasted) {}\n" +
 		"\tvirtual void trigger() {}\n" +
 		"private:\n" +

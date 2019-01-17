@@ -8,20 +8,3 @@
 #include "TGIType.h"
 
 /*Below is each custom "Type"*/
-
-//casting is temporarily disabled
-
-class speedTypeClass
-{
-public:
-	speedTypeClass(const std::string& _name)
-	{
-		name = _name;
-		//castString = dynamic_cast<TGIType*>(speedTypeClass);
-	}
-	virtual TGIType* castToChildType(TGIType* typeToBeCasted) {}
-	virtual void trigger() {}
-private:
-	std::string name;
-	std::string castString;
-};

@@ -1,11 +1,25 @@
 #pragma once
-
-#include "tgiType.h"
 #include <vector>
+#include <string>
+#include <thread>
+
+#define EXECUTABLE_NAME "TGIChatBot.exe"
+
+struct FileWatcher
+{
+	FileWatcher() = delete;
+	FileWatcher(const std::string &fileName, const std::string &hint);
+	bool checkIfFileChanged();
+private:
+	std::string currentHint;
+	std::string fileBeingWatched;
+};
 
 /*
 A class to interface between data stored in logs files and data in memory
 */
+
+///update the file paths here ... the idea of this class is to be an interface to the files using the given file path
 
 class TGIDataHandler
 {
@@ -18,18 +32,30 @@ public:
 	 */
 	TGIDataHandler();
 
+	//getter functions
+	inline const std::string& getFilePathString() const { return filePathExe; }
+	inline const std::string& getUpdatedChatLogString() { readChatLogToMemory(); return chatLog; }
+	inline const std::string& getUpdatedCommandListString() { readCommandListToMemory(); return commands; }
+
+	bool checkChatLogForChange();
+
+	void setFilePath(std::string path);
+
+private:
+
+//save space for other implementations
+
 	void readChatLogToMemory();
 	void readCommandListToMemory();
 
-	void setFilePath(std::string path);
-	inline std::string getFilePath() { return this->filePath; }
+	/* File paths filled in by constructor and saved in the init file */
+	std::string filePathExe;
+	std::string filePathBot;
+	std::string filePathLogFiles;
 
-private:
-	/*
-	Contains a pair, the type and the count of how many occurances are in the current chat log
-	 */
-	std::vector<std::pair<TGIType, int> > commandList;
-	std::string filePath;
 	std::string chatLog;
 	std::string commands;
+
+	FileWatcher* fileWatcher;
+	std::string fileWatcherHint = "";
 };

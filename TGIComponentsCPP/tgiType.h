@@ -1,7 +1,6 @@
 #pragma once
 
-#include <string>
-#include <vector>
+#include "tgiDataHandler.h"
 
 ///do you need to cast in the type class or the generator
 
@@ -16,6 +15,25 @@ class TGIType
 {
 
 public:
+	TGIType() {}
+	const std::string& getCommandName() const { return this->name; }
+
+	bool operator<(const TGIType& rhs)
+	{
+		int index = 0;
+		while (this->name[index] == rhs.getCommandName()[index])
+			++index;
+		return (unsigned int)name[index] < (unsigned int)rhs.getCommandName()[index];
+	}
+
+	bool operator>(const TGIType& rhs)
+	{
+		int index = 0;
+		while (this->name[index] == rhs.getCommandName()[index])
+			++index;
+		return (unsigned int)name[index] > (unsigned int)rhs.getCommandName()[index];
+	}
+
 	TGIType(const std::string& _name)
 	{
 		name = _name;
@@ -25,6 +43,16 @@ public:
 
 	virtual TGIType* castToChildType(TGIType*) {}
 	virtual void trigger() {}
+
+protected:
+
+	const int getCount() const { return count; }
+	void incrementCount()	   { ++count; }
+
+
+	//how many occurences were counted
+	int count = 0;
+	//maybe have a count threshold in the class, but it complicates things
 
 private:
 	std::string name;
@@ -53,4 +81,9 @@ private:
 	void createCPPFile(const std::string& commandName);
 	bool canCreateCommand(const std::string& commandName);
 	std::string createClassNameForCommand(const std::string& commandName);
+	//do this later
+	void checkForWatermark();
+
+	TGIDataHandler commandListInterface;
+	
 };
