@@ -1,2 +1,4 @@
-﻿  TGIComponentsCPP.vcxproj -> C:\Users\Tyler\documents\visual studio 2015\Projects\TGIComponentsCPP\Debug\TGIComponentsCPP.exe
+﻿  tgiDataHandler.cpp
+c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\tgidatahandler.cpp(44): warning C4715: 'FileWatcher::checkIfFileChanged': not all control paths return a value
+  TGIComponentsCPP.vcxproj -> C:\Users\Tyler\documents\visual studio 2015\Projects\TGIComponentsCPP\Debug\TGIComponentsCPP.exe
   TGIComponentsCPP.vcxproj -> C:\Users\Tyler\documents\visual studio 2015\Projects\TGIComponentsCPP\Debug\TGIComponentsCPP.pdb (Partial PDB)

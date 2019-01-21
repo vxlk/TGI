@@ -59,7 +59,7 @@ TGIStatus TGICppAPI_WIN::startPoll()
 		NULL,           // Command line
 		NULL,           // Process handle not inheritable
 		NULL,           // Thread handle not inheritable
-		FALSE,          // Set handle inheritance to FALSE
+		TRUE,          // Set handle inheritance to FALSE
 		0,              // No creation flags
 		NULL,           // Use parent's environment block
 		NULL,           // Use parent's starting directory 
@@ -136,7 +136,7 @@ void TGICppAPI_WIN::runCommands()
 	//loop through loop and types and do what u need to do
 }
 
-TGIStatus TGICppAPI_WIN::update()
+void TGICppAPI_WIN::update()
 {
 	if (isRunning)
 	{

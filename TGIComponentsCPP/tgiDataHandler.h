@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include <string>
-#include <thread>
 
 #define EXECUTABLE_NAME "TGIChatBot.exe"
 
@@ -40,6 +39,8 @@ public:
 	bool checkChatLogForChange();
 
 	void setFilePath(std::string path);
+
+	std::vector<std::string> returnCommandList();
 
 private:
 

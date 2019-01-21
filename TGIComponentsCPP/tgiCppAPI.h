@@ -1,7 +1,7 @@
 #pragma once
 
 #include "configEditor.h"
-#include "tgiVector.h"
+#include "typeList.h"
 
 
 #ifdef _WIN32
@@ -37,7 +37,7 @@ public:
 	TGIStatus closePoll();
 	TGIStatus addCommand(const std::string& toBeAdded);
 	const std::string getCommandList();
-	TGIStatus update();
+	void update();
 	
 	TGIStatus changeChannel(std::string newChannel);
 
@@ -49,7 +49,7 @@ private:
 	void runCommands();
 
 	/*Info about each command*/
-	tgiVector<TGIType*> types;
+	TypeList types;
 
 	/*Info about the bot process*/
 	STARTUPINFO si;

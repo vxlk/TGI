@@ -36,11 +36,55 @@ TGITypeGenerator::TGITypeGenerator()
 /*
 PUT ERROR CODES HERE
 */
+void TGITypeGenerator::createListFile(const std::string& commandName)
+{
+	//generate class name
+	std::string className = createClassNameForCommand(commandName);
+
+	//maybe have this in the base file and read it in instead
+	std::vector<std::string> fileString;
+	std::fstream generatedFile;
+	generatedFile.open("typeList.h");
+	if (!generatedFile) return;
+	//temp string
+	std::string currentLine = "";
+	//read the entire file into an array, make sure you are not making a duplicate class
+	while (std::getline(generatedFile, currentLine))
+		if (currentLine.find(className))
+		{
+			generatedFile.close();
+			return;
+		}
+		else
+			fileString.push_back(currentLine + "\n");
+
+	//go thru and find TypeList(), go 1 more to skip { then append the new class to the constructor
+	for (int i = 0; i < fileString.size(); ++i)
+		if (fileString[i].find("TypeList()"))
+		{
+			//skip the { and go to the cast line
+			i += 2;
+			fileString[i] += "types.push_back(dynamic_cast<" + createClassNameForCommand(commandName) + "*>(new TGIType()));\n";
+			break;
+		}
+
+	//write new file
+	if (generatedFile)
+		for (int i = 0; i < fileString.size(); ++i)
+			generatedFile << fileString[i];
+
+	generatedFile.close();
+}
+
 void TGITypeGenerator::createCPPFile(const std::string& commandName)
 {
 	/*
 	<includes>
 	*/
+
+	//generate class name
+	std::string className = createClassNameForCommand(commandName);
+
 	//maybe have this in the base file and read it in instead
 	std::vector<std::string> fileString;
 	std::fstream generatedFile;
@@ -48,8 +92,15 @@ void TGITypeGenerator::createCPPFile(const std::string& commandName)
 	if (!generatedFile) return;
 	//temp string
 	std::string currentLine = "";
+	//read the entire file into an array, make sure you are not making a duplicate class
 	while (std::getline(generatedFile, currentLine))
-		fileString.push_back(currentLine + "\n");
+		if (currentLine.find(className)) 
+		{
+			generatedFile.close();
+			return;
+		}
+		else 
+			fileString.push_back(currentLine + "\n");
 
 	//if the beginning contents dont match ... append this
 #if 0
@@ -70,9 +121,6 @@ void TGITypeGenerator::createCPPFile(const std::string& commandName)
 	//reset file pointer back to beginning
 	generatedFile.clear();
 	generatedFile.seekg(0, std::ios::beg);
-
-	//generate new type code and append to current file string
-	std::string className = createClassNameForCommand(commandName);
 
 	/*
 	class TGIType
@@ -122,12 +170,20 @@ private:
 		for (int i = 0; i < fileString.size(); ++i)
 			generatedFile << fileString[i];
 
+	//update the list file
+	createListFile(commandName);
+
 	generatedFile.close();
 }
 
-void TGITypeGenerator::createType(const std::string& commandName)
+void TGITypeGenerator::addType(const std::string& commandName)
 {
-
+	/*
+	std::ofstream generatedFile;
+	generatedFile.open("tgiGeneratedTypes.h", std::ios::app);
+	if (!generatedFile) return;
+	*/
+	createCPPFile(commandName);
 }
 
 std::string TGITypeGenerator::createClassNameForCommand(const std::string& commandName)

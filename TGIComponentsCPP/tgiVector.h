@@ -50,7 +50,7 @@ public:
 	bool contains(T toBeSearchedFor)
 	{
 		int l = 0;
-		int r = size − 1;
+		int r = size - 1;
 		int m = 0;
 
 		while (l <= r)
@@ -68,7 +68,7 @@ public:
 	int containsAtIndex(T toBeSearchedFor)
 	{
 		int l = 0;
-		int r = size − 1;
+		int r = size - 1;
 		int m = 0;
 
 		while (l <= r)

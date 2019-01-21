@@ -14,7 +14,7 @@ int main()
 		else if (command == "start") bot.startPoll();
 		else if (command == "stop")  bot.closePoll();
 		else if (command.find("addCommand") != command.npos) bot.addCommand(command);
-		//else if (command == "update") bot.update();
+		else if (command == "update") bot.update();
 		else if (command == "channel")
 		{
 			std::string in;

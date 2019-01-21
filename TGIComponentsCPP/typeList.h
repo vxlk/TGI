@@ -5,31 +5,33 @@
 						DESIGNATED AREAS IS PRONE TO
  *********************		   DELETION           ********************************
  */
-#include "TGIType.h"
 
-/*Below is each custom "Type"*/
-class speedTypeClass : public TGIType 
-{
-public:
-	speedTypeClass() : name("speed") {}
-	virtual void trigger() 
-	{
-		//Code that will be run when the command is triggered will go here
-	}
-private:
-	std::string name;
-};
+#include "tgiGeneratedTypes.h"
+//#include "tgiVector.h"
+
 
 /*
 The data structure that holds the list of all the children of TGIType : ie all commands registered in the system
+use regular vector for now...
 */
-struct typeList
+
+struct TypeList
 {
-	typeList()
+	TypeList()
 	{
 		//List of types -> casted to each child
-		types.push_back(dynamic_cast<speedTypeClass*>(new speedTypeClass()));
+		types.push_back(dynamic_cast<speedTypeClass*>(new TGIType()));
 	}
+
+	~TypeList()
+	{
+		for (int i = 0; i < types.size(); ++i)
+			types.pop_back();
+	}
+
+	bool operator==(const TypeList&) = delete;
+	TypeList operator=(const TypeList&) = delete;
+
 
 	static const std::vector<TGIType*> getTypeList() { return types; }
 private:

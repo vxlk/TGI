@@ -65,7 +65,12 @@ class TGITypeGenerator
 {
 public:
 	TGITypeGenerator();
-	void createType(const std::string& commandName);
+
+	//append a new type class to the generated file
+	void addType(const std::string& commandName);
+
+	//return a derived type of base class TGIType
+	TGIType createType(const std::string& commandName);
 
 	/*
 	** MODIFIES THE ARRAY **
@@ -77,12 +82,15 @@ public:
 	*/
 	void autoCastTypes(std::vector<TGIType* >& commandList);
 private:
-	//TGIType* castToChildType(TGIType* base, const std::string& commandName);
+
 	void createCPPFile(const std::string& commandName);
+	void createListFile(const std::string& commandName);
+
 	bool canCreateCommand(const std::string& commandName);
 	std::string createClassNameForCommand(const std::string& commandName);
+
 	//do this later
-	void checkForWatermark();
+	void writeDefaultFileFormats();
 
 	TGIDataHandler commandListInterface;
 	

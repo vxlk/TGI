@@ -1,7 +1,9 @@
 #include "tgiDataHandler.h"
 #include <fstream>
+#include <algorithm>
 
-#if __has_include(<experimental/filesystem>)
+#if defined(__has_include)
+#if __has_include("experimental/filesystem")
 #include <experimental/filesystem>
 namespace fs = std::experimental::filesystem;
 #elif __has_include(<filesystem>)
@@ -10,6 +12,7 @@ namespace fs = std::filesystem;
 #else 
 #error File system not supported.. Use a C++17 compiler for std::filesystem
 #endif
+#endif //if defined
 
 FileWatcher::FileWatcher(const std::string &filePath, const std::string &hint)
 {
@@ -35,6 +38,7 @@ bool FileWatcher::checkIfFileChanged()
 		if (mostRecentMessage == "")
 			std::getline(f, mostRecentMessage);
 
+		f.close();
 		return mostRecentMessage == currentHint;
 	}
 }
@@ -46,11 +50,22 @@ TGIDataHandler::TGIDataHandler()
 	chatLog = "";
 	commands = "";
 
+
+	//clear log files before initialization
+	std::ofstream log;
+	log.open("PhantomBotLog.txt", std::ofstream::out | std::ofstream::trunc);
+	log.close();
+
+	log.open("ChatLog.txt", std::ofstream::out | std::ofstream::trunc);
+	log.close();
+
+
+
 	//get bot path
-	fs::path full_path(fs::canonical("TGIChatBot.exe"));
+	//fs::path full_path(fs::canonical("TGIChatBot.exe"));
 
 
-	full_path = fs::system_complete(fs::path("temp/"));
+	//full_path = fs::system_complete(fs::path("temp/"));
 }
 
 void TGIDataHandler::setFilePath(std::string path)
@@ -87,13 +102,22 @@ void TGIDataHandler::readCommandListToMemory()
 bool TGIDataHandler::checkChatLogForChange()
 {
 	readChatLogToMemory();
-	
+
+	if (chatLog == "") return false; 
+
 	if (fileWatcherHint == "")
 	{
 		//get last line as hint
 		int index = chatLog.size() - 1;
-		while (chatLog[index--] != '\n')
+		//skip end of file garbage
+		while (chatLog[index] == '\n' || chatLog[index] == '\r' || chatLog[index] == '\t')
+			--index;
+		while (chatLog[index] != '\n' && chatLog[index--] != ':')
+		{
 			this->fileWatcherHint += chatLog[index];
+			--index;
+		}
+		std::reverse(fileWatcherHint.begin(), fileWatcherHint.end());
 	}
 
 	if (!this->fileWatcher)
@@ -106,4 +130,15 @@ bool TGIDataHandler::checkChatLogForChange()
 	}
 
 	return false;
+}
+
+const std::vector<std::string> TGIDataHandler::returnCommandList()
+{
+	std::ifstream f;
+	f.open("Commands.txt");
+	std::vector<std::string> toBeReturned;
+	std::string command;
+	while (std::getline(f, command))
+		toBeReturned.push_back(command);
+	return toBeReturned;
 }
