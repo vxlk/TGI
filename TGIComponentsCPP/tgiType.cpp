@@ -5,6 +5,32 @@
 #include <sstream>
 
 /*
+Utility Functions
+*/
+
+std::string cleanCommandName(const std::string& commandName)
+{
+	std::string str = commandName;
+
+	//this list should be updated before beta testing -> also might want to write your own algorithm
+	str.erase(std::remove(str.begin(), str.end(), '!'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), '#'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
+	str.erase(std::remove(str.begin(), str.end(), '\''), str.end());
+	str.erase(std::remove(str.begin(), str.end(), '\"'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), '/'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), ';'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), ':'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), '.'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), ','), str.end());
+	str.erase(std::remove(str.begin(), str.end(), '`'), str.end());
+
+	return str;
+}
+
+/*
 Generator Functions
 */
 
@@ -50,7 +76,7 @@ void TGITypeGenerator::createListFile(const std::string& commandName)
 	std::string currentLine = "";
 	//read the entire file into an array, make sure you are not making a duplicate class
 	while (std::getline(generatedFile, currentLine))
-		if (currentLine.find(className))
+		if (currentLine.find(className) != currentLine.npos)
 		{
 			generatedFile.close();
 			return;
@@ -60,13 +86,17 @@ void TGITypeGenerator::createListFile(const std::string& commandName)
 
 	//go thru and find TypeList(), go 1 more to skip { then append the new class to the constructor
 	for (int i = 0; i < fileString.size(); ++i)
-		if (fileString[i].find("TypeList()"))
+		if (fileString[i].find("TypeList()") != fileString[i].npos)
 		{
 			//skip the { and go to the cast line
 			i += 2;
-			fileString[i] += "types.push_back(dynamic_cast<" + createClassNameForCommand(commandName) + "*>(new TGIType()));\n";
+			fileString[i] += "\n\t\ttypes.push_back(dynamic_cast<" + createClassNameForCommand(commandName) + "*>(new TGIType()));\n";
 			break;
 		}
+
+	//reset file pointer back to beginning
+	generatedFile.clear();
+	generatedFile.seekg(0, std::ios::beg);
 
 	//write new file
 	if (generatedFile)
@@ -94,7 +124,7 @@ void TGITypeGenerator::createCPPFile(const std::string& commandName)
 	std::string currentLine = "";
 	//read the entire file into an array, make sure you are not making a duplicate class
 	while (std::getline(generatedFile, currentLine))
-		if (currentLine.find(className)) 
+		if (currentLine.find(className) != currentLine.npos) 
 		{
 			generatedFile.close();
 			return;
@@ -144,21 +174,15 @@ private:
 	*/
 	std::string classContentsString
 	(
-		"class " + className + " : protected TGIType " + "\n" +
+		"class " + className + " : public TGIType " + "\n" +
 		"{\n" +
 		"public:\n\t" +
-		className + "() \n\t{\n" +
-		"\t\tname = \"\";\n\t" +
-		"}\n\t" +
-		className + "(const std::string& _name)" +
-		"\n\t{\n" +
-		"\t\tname = _name;\n" +
-		"\t\t//castString = dynamic_cast<TGIType>(" + className + ");\n\t}\n" +
-		"\tvirtual TGIType* castToChildType(TGIType* typeToBeCasted) {}\n" +
-		"\tvirtual void trigger() {}\n" +
+		className + "() : name(" + "\"" + cleanCommandName(commandName) + "\"" + ")\t{}\n" +
+		"\tvirtual void trigger()\n\t{\n" +
+		"\t\t//Code that will be run when the command is triggered will go here\n" +
+		"\t}\n" +
 		"private:\n" +
 		"\tstd::string name;\n" +
-		"\tstd::string castString;\n"
 		"};\n"
 	);
 
@@ -191,23 +215,7 @@ std::string TGITypeGenerator::createClassNameForCommand(const std::string& comma
 	//create the name -> search for name in file
 	//name doesnt exist ? return className : return ""
 	//strip the ! out of command, as well as spaces and unavailable characters
-	std::string str = commandName;
-
-	//this list should be updated before beta testing -> also might want to write your own algorithm
-	str.erase(std::remove(str.begin(), str.end(), '!'), str.end());
-	str.erase(std::remove(str.begin(), str.end(), '#'), str.end());
-	str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
-	str.erase(std::remove(str.begin(), str.end(), '\''), str.end());
-	str.erase(std::remove(str.begin(), str.end(), '\"'), str.end());
-	str.erase(std::remove(str.begin(), str.end(), '\\'), str.end());
-	str.erase(std::remove(str.begin(), str.end(), '/'), str.end());
-	str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
-	str.erase(std::remove(str.begin(), str.end(), ';'), str.end());
-	str.erase(std::remove(str.begin(), str.end(), ':'), str.end());
-	str.erase(std::remove(str.begin(), str.end(), '.'), str.end());
-	str.erase(std::remove(str.begin(), str.end(), ','), str.end());
-	str.erase(std::remove(str.begin(), str.end(), '`'), str.end());
-
+	std::string str = cleanCommandName(commandName);
 	str += "TypeClass";
 
 	/* Some Additional Checks may be needed here*/

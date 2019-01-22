@@ -56,5 +56,8 @@
     <ClInclude Include="tgiVector.h">
       <Filter>Source Files\Public</Filter>
     </ClInclude>
+    <ClInclude Include="typeList.h">
+      <Filter>Source Files\Public</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

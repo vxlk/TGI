@@ -20,9 +20,7 @@ struct TypeList
 	TypeList()
 	{
 		//List of types -> casted to each child
-
 		types.push_back(dynamic_cast<speedTypeClass*>(new TGIType()));
-		
 	}
 
 	~TypeList()
@@ -35,7 +33,7 @@ struct TypeList
 	TypeList operator=(const TypeList&) = delete;
 
 
-	const std::vector<TGIType*> getTypeList() { return types; }
+	static const std::vector<TGIType*> getTypeList() { return types; }
 private:
-	std::vector<TGIType*> types;
+	static std::vector<TGIType*> types;
 };

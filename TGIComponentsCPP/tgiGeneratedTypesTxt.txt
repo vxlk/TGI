@@ -7,12 +7,12 @@
  */
 #include "TGIType.h"
 
-
+/*Below is each custom "Type"*/
 class speedTypeClass : public TGIType 
 {
 public:
-	speedTypeClass() : name("speed")	{}
-	virtual void trigger()
+	speedTypeClass() : name("speed") {}
+	virtual void trigger() 
 	{
 		//Code that will be run when the command is triggered will go here
 	}

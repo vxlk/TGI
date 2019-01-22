@@ -40,7 +40,7 @@ public:
 
 	void setFilePath(std::string path);
 
-	std::vector<std::string> returnCommandList();
+	const std::vector<std::string> returnCommandList();
 
 private:
 

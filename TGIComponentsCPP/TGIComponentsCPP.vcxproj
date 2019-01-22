@@ -123,6 +123,7 @@
     <ClInclude Include="tgiGeneratedTypes.h" />
     <ClInclude Include="tgiType.h" />
     <ClInclude Include="tgiVector.h" />
+    <ClInclude Include="typeList.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
