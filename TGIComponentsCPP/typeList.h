@@ -21,6 +21,8 @@ struct TypeList
 	{
 		//List of types -> casted to each child
 
+		types.push_back(dynamic_cast<anotherCommandTypeClass*>(new TGIType()));
+
 		types.push_back(dynamic_cast<speedTypeClass*>(new TGIType()));
 		
 	}

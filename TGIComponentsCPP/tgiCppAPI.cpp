@@ -134,6 +134,16 @@ TGIStatus TGICppAPI_WIN::addCommand(const std::string& toBeAdded)
 void TGICppAPI_WIN::runCommands()
 {
 	//loop through loop and types and do what u need to do
+	std::vector<std::string> newChatMessages = data.getChangedData();
+	for(int i = 0; i < newChatMessages.size(); ++i)
+		if (data.getUpdatedCommandListString().find(newChatMessages[i])
+			//find which command, run the trigger
+
+			//you have a list of types
+			//each type has a name
+			//go thru each type and see if name matches?
+
+			///overload [] operator of typeList to take a string, find the type that way -> can i do without On time??
 }
 
 void TGICppAPI_WIN::update()

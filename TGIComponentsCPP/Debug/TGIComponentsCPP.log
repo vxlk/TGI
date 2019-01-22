@@ -1,7 +1,17 @@
 ﻿  tgiCppAPI.cpp
-c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\typelist.h(28): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\typelist.h(28): warning C4018: '<': signed/unsigned mismatch
+c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\typelist.h(30): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
+  Compiling...
+  tgiType.cpp
+c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\tgitype.cpp(88): warning C4018: '<': signed/unsigned mismatch
+c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\tgitype.cpp(103): warning C4018: '<': signed/unsigned mismatch
+c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\tgitype.cpp(194): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\typelist.h(30): warning C4018: '<': signed/unsigned mismatch
+  configEditor.cpp
+c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\configeditor.cpp(69): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  tgiDataHandler.cpp
   TGIComponentsCPP.vcxproj -> C:\Users\Tyler\documents\visual studio 2015\Projects\TGIComponentsCPP\Debug\TGIComponentsCPP.exe
   TGIComponentsCPP.vcxproj -> C:\Users\Tyler\documents\visual studio 2015\Projects\TGIComponentsCPP\Debug\TGIComponentsCPP.pdb (Partial PDB)

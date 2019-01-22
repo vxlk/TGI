@@ -14,6 +14,8 @@ namespace fs = std::filesystem;
 #endif
 #endif //if defined
 
+//new idea for check for change ... read two strings return str1 == str2
+
 FileWatcher::FileWatcher(const std::string &filePath, const std::string &hint)
 {
 	this->fileBeingWatched = filePath;
@@ -77,6 +79,9 @@ void TGIDataHandler::setFilePath(std::string path)
 ///these will need to use the master file path eventually ... not now though
 void TGIDataHandler::readChatLogToMemory()
 {
+	//save previous state for comparison
+	previousChatLog = chatLog;
+
 	std::ifstream chatLogFile;
 	chatLogFile.open("ChatLog.txt");
 
@@ -142,3 +147,40 @@ const std::vector<std::string> TGIDataHandler::returnCommandList()
 		toBeReturned.push_back(command);
 	return toBeReturned;
 }
+
+/*
+***IMPORTANT***
+Assumes the strings are different
+Assumes previous is < current chat log
+*/
+//returns list of new chats
+const std::vector<std::string> TGIDataHandler::getChangedData()
+{
+	std::vector<std::string> toBeReturned;
+	std::string buffer = "";
+	for (int i = previousChatLog.size() - 1; i < chatLog.size(); ++i)
+		if (chatLog[i])
+		{
+			//append and clear
+			toBeReturned.push_back(buffer);
+			buffer.clear();
+		}
+		else buffer += chatLog[i];
+
+		return toBeReturned;
+}
+//returns current count of a command in this session
+const unsigned int TGIDataHandler::getCountOfCommand(const std::string& commandName)
+{
+	unsigned int count = 0;
+	unsigned int nPos = 0;
+	while ((unsigned int)(nPos = chatLog.find(commandName, nPos)) != (unsigned int)std::string::npos)
+	{
+		count++; 
+		nPos += commandName.size();
+	}
+
+	return count;
+}
+
+//fix all warnings by casting npos to (unsigned)

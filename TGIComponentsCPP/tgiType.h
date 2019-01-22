@@ -41,7 +41,7 @@ public:
 		castString = "dynamic_cast<TGIType>(TGIType);";
 	}
 
-	virtual TGIType* castToChildType(TGIType*) {}
+	//virtual TGIType* castToChildType(TGIType*) {}
 	virtual void trigger() {}
 
 protected:

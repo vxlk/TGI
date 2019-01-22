@@ -38,6 +38,18 @@ public:
 
 	bool checkChatLogForChange();
 
+
+	/*
+	***IMPORTANT***
+	THESE BOTH:
+	Assumes the strings are different
+	Assumes previous is < current chat log
+	*/
+	//returns list of new chats
+	const std::vector<std::string> getChangedData();
+	//returns current count of a command in this session
+	const unsigned int getCountOfCommand(const std::string& commandName);
+
 	void setFilePath(std::string path);
 
 	const std::vector<std::string> returnCommandList();
@@ -55,6 +67,8 @@ private:
 	std::string filePathLogFiles;
 
 	std::string chatLog;
+	std::string previousChatLog;
+
 	std::string commands;
 
 	FileWatcher* fileWatcher;
