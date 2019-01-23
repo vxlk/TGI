@@ -16,7 +16,7 @@ class TGIType
 
 public:
 	TGIType() {}
-	const std::string& getCommandName() const { return this->name; }
+	virtual const std::string& getCommandName() const { return this->name; }
 
 	bool operator<(const TGIType& rhs)
 	{
@@ -41,7 +41,7 @@ public:
 		castString = "dynamic_cast<TGIType>(TGIType);";
 	}
 
-	//virtual TGIType* castToChildType(TGIType*) {}
+	//virtual const std::string& getName() const { return name; }
 	virtual void trigger() {}
 
 protected:

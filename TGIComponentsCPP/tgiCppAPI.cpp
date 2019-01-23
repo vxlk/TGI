@@ -36,6 +36,7 @@ TGICppAPI_WIN::TGICppAPI_WIN()
 
 	//init generator
 	this->generator = new TGITypeGenerator();
+	this->types = new TypeList();
 }
 
 /// CloseHandle( pi.hProcess ); to close
@@ -128,29 +129,26 @@ bool TGICppAPI_WIN::checkForChannelConnection()
 
 TGIStatus TGICppAPI_WIN::addCommand(const std::string& toBeAdded)
 {
+	//update typeList
 	return CloseSuccess;
 }
 
 void TGICppAPI_WIN::runCommands()
 {
 	//loop through loop and types and do what u need to do
-	std::vector<std::string> newChatMessages = data.getChangedData();
-	for(int i = 0; i < newChatMessages.size(); ++i)
-		if (data.getUpdatedCommandListString().find(newChatMessages[i])
-			//find which command, run the trigger
-
-			//you have a list of types
-			//each type has a name
-			//go thru each type and see if name matches?
-
-			///overload [] operator of typeList to take a string, find the type that way -> can i do without On time??
+	std::vector<std::string> newChatMessages = data.getChangedData(); ///not working... ALSO NEED TO STRIP NAME OUT OF COMMANDS
+	for (int i = 0; i < newChatMessages.size(); ++i)
+		//if its a valid command
+		if (data.getUpdatedCommandListString().find(data.stripNameOutOfChatLine(newChatMessages[i])))
+			//pull the trigger for the type with this name
+			this->types->getTypeByName( data.stripExclamationPoint( data.stripNameOutOfChatLine( newChatMessages[i] )) )->trigger();
 }
 
 void TGICppAPI_WIN::update()
 {
 	if (isRunning)
 	{
-		if (data.checkChatLogForChange())
+		if (data.checkChatLogForChange()) //broken
 			runCommands();
 	}
 }

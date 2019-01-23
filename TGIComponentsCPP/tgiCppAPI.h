@@ -49,7 +49,7 @@ private:
 	void runCommands();
 
 	/*Info about each command*/
-	TypeList types;
+	TypeList* types;
 
 	/*Info about the bot process*/
 	STARTUPINFO si;

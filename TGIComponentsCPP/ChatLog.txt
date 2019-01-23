@@ -1,0 +1,4 @@
+void_nullptr:!speed
+void_nullptr:!speed
+void_nullptr:!speed
+r!void_nullptr@void_nullptr.tmi.twitch.tv JOIN #void_nullptr

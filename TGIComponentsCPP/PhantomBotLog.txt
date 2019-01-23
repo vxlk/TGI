@@ -1,16 +1,34 @@
-[01/14/19 18:49:02d]: {C++} Establishing TwitchIRC Instance
-[01/14/19 18:49:02d]: {C++} Establishing TwitchIRC Login Token
-[01/14/19 18:49:02d]: {C++} Attempting to send command 'PASS oauth:1klswaqpqyv6jv7gsa4yxwt0liulyk'.
-[01/14/19 18:49:02d]: {C++} Attempting to send command 'NICK TGIChatBot'.
-[01/14/19 18:49:02d]: {C++} Attempting to send command 'USER TGIChatBot'.
-[01/14/19 18:49:02d]: {C++} Attempting to send command 'CAP REQ :twitch.tv/commands'.
-[01/14/19 18:49:02d]: {C++} Attempting to send command 'CAP REQ :twitch.tv/membership'.
-[01/14/19 18:49:02d]: {C++} Attempting to send command 'CAP REQ :twitch.tv/tags'.
-[01/14/19 18:49:02d]: {Twitch} Connected to TwitchIRC, connecting to channel '##void_nullptr'.
-[01/14/19 18:49:02d]: {C++} Attempting to send command 'JOIN #void_nullptr'.
-[01/14/19 18:49:02d]: {Twitch} Sending Message The hanzo mains own this channel......
-[01/14/19 18:49:02d]: {C++} Added command 'PRIVMSG #void_nullptr :The hanzo mains own this channel...'.
-[01/14/19 18:49:02d]: {C++} Attempting to send command 'PRIVMSG #void_nullptr :The hanzo mains own this channel...'.
-[01/14/19 18:49:02d]: {C++} Attempting to push command 'PING :tmi.twitch.tv'.
-[01/14/19 18:49:02d]: {Twitch} Recieved USERSTATE Command: ':tgichatbot.tmi.twitch.tv 353 tgichatbot = #void_nullptr :tgichatbot:tgichatbot.tmi.twitch.tv 366 tgichatbot #void_nullptr :End of /NAMES list@badges=;color=;display-name=tgichatbot;emote-sets=0;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #void_nullptr@broadcaster-lang=;emote-only=0;followers-only=-1;r9k=0;rituals=0;room-id=48940725;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #void_nullptr'.
-[01/14/19 18:49:02d]: {Twitch} Recieved USERSTATE Command: '@badges=;color=;display-name=tgichatbot;emote-sets=0;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #void_nullptrr :End of /NAMES list@badges=;color=;display-name=tgichatbot;emote-sets=0;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #void_nullptr@broadcaster-lang=;emote-only=0;followers-only=-1;r9k=0;rituals=0;room-id=48940725;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #void_nullptr'.
+[01/23/19 00:00:02d]: {C++} Establishing TwitchIRC Instance
+[01/23/19 00:00:02d]: {C++} Establishing TwitchIRC Login Token
+[01/23/19 00:00:02d]: {C++} Attempting to send command 'PASS oauth:1klswaqpqyv6jv7gsa4yxwt0liulyk'.
+[01/23/19 00:00:02d]: {C++} Attempting to send command 'NICK TGIChatBot'.
+[01/23/19 00:00:02d]: {C++} Attempting to send command 'USER TGIChatBot'.
+[01/23/19 00:00:02d]: {C++} Attempting to send command 'CAP REQ :twitch.tv/commands'.
+[01/23/19 00:00:02d]: {C++} Attempting to send command 'CAP REQ :twitch.tv/membership'.
+[01/23/19 00:00:02d]: {C++} Attempting to send command 'CAP REQ :twitch.tv/tags'.
+[01/23/19 00:00:02d]: {Twitch} Connected to TwitchIRC, connecting to channel '##void_nullptr'.
+[01/23/19 00:00:02d]: {C++} Attempting to send command 'JOIN #void_nullptr'.
+[01/23/19 00:00:02d]: {Twitch} Sending Message The hanzo mains own this channel......
+[01/23/19 00:00:02d]: {C++} Added command 'PRIVMSG #void_nullptr :The hanzo mains own this channel...'.
+[01/23/19 00:00:02d]: {C++} Attempting to push command 'PING :tmi.twitch.tv'.
+[01/23/19 00:00:02d]: {C++} Attempting to send command 'PRIVMSG #void_nullptr :The hanzo mains own this channel...'.
+[01/23/19 00:00:02d]: {Twitch} Recieved USERSTATE Command: ':tgichatbot.tmi.twitch.tv 353 tgichatbot = #void_nullptr :tgichatbot:tgichatbot.tmi.twitch.tv 366 tgichatbot #void_nullptr :End of /NAMES list@badges=;color=;display-name=tgichatbot;emote-sets=0;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #void_nullptr@broadcaster-lang=;emote-only=0;followers-only=-1;r9k=0;rituals=0;room-id=48940725;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #void_nullptr'.
+[01/23/19 00:00:02d]: {Twitch} Recieved USERSTATE Command: '@badges=;color=;display-name=tgichatbot;emote-sets=0;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #void_nullptrr :End of /NAMES list@badges=;color=;display-name=tgichatbot;emote-sets=0;mod=0;subscriber=0;user-type= :tmi.twitch.tv USERSTATE #void_nullptr@broadcaster-lang=;emote-only=0;followers-only=-1;r9k=0;rituals=0;room-id=48940725;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #void_nullptr'.
+[01/23/19 00:00:02d]: {Chat} void_nullptr: !speed
+;followers-only=-1;r9k=0;rituals=0;room-id=48940725;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #void_nullptr
+
+[01/23/19 00:04:02d]: {C++} Attempting to push command 'PING :tmi.twitch.tv'.
+[01/23/19 00:05:02d]: {Chat} void_nullptr: !speed
+;followers-only=-1;r9k=0;rituals=0;room-id=48940725;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #void_nullptr
+
+[01/23/19 00:08:02d]: {C++} Attempting to push command 'PING :tmi.twitch.tv'.
+[01/23/19 00:09:02d]: {Chat} void_nullptr: !speed
+;followers-only=-1;r9k=0;rituals=0;room-id=48940725;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #void_nullptr
+
+[01/23/19 00:10:02d]: {Chat} r!void_nullptr@void_nullptr.tmi.twitch.tv JOIN #void_nullptr
+:jtv MODE #void_nullptr +o void_nullptr
+2: !speed
+;followers-only=-1;r9k=0;rituals=0;room-id=48940725;slow=0;subs-only=0 :tmi.twitch.tv ROOMSTATE #void_nullptr
+
+[01/23/19 00:12:02d]: {C++} Attempting to push command 'PING :tmi.twitch.tv'.
+[01/23/19 00:16:02d]: {C++} Attempting to push command 'PING :tmi.twitch.tv'.

@@ -15,15 +15,16 @@ The data structure that holds the list of all the children of TGIType : ie all c
 use regular vector for now...
 */
 
+///MAKE THIS A SINGLETON
 struct TypeList
 {
 	TypeList()
 	{
 		//List of types -> casted to each child
 
-		types.push_back(dynamic_cast<anotherCommandTypeClass*>(new TGIType()));
+		types.push_back(static_cast<anotherCommandTypeClass*>(new TGIType("anotherCommand")));
 
-		types.push_back(dynamic_cast<speedTypeClass*>(new TGIType()));
+		types.push_back(static_cast<speedTypeClass*>(new TGIType("speed")));
 		
 	}
 
@@ -36,6 +37,13 @@ struct TypeList
 	bool operator==(const TypeList&) = delete;
 	TypeList operator=(const TypeList&) = delete;
 
+	inline TGIType* getTypeByName(const std::string& commandName)
+	{
+		for (int i = 0; i < types.size(); ++i)
+			if (types[i]->getCommandName() == commandName)
+				return types[i];
+		return nullptr;
+	}
 
 	const std::vector<TGIType*> getTypeList() { return types; }
 private:

@@ -109,7 +109,7 @@ bool TGIDataHandler::checkChatLogForChange()
 	readChatLogToMemory();
 
 	if (chatLog == "") return false; 
-
+	return chatLog != previousChatLog;
 	if (fileWatcherHint == "")
 	{
 		//get last line as hint
@@ -158,8 +158,10 @@ const std::vector<std::string> TGIDataHandler::getChangedData()
 {
 	std::vector<std::string> toBeReturned;
 	std::string buffer = "";
-	for (int i = previousChatLog.size() - 1; i < chatLog.size(); ++i)
-		if (chatLog[i])
+	int i;
+	previousChatLog == "" ? i = 0 : i = previousChatLog.size()-1;
+	for (; i < chatLog.size(); ++i)
+		if (chatLog[i] == '\n')
 		{
 			//append and clear
 			toBeReturned.push_back(buffer);
@@ -181,6 +183,17 @@ const unsigned int TGIDataHandler::getCountOfCommand(const std::string& commandN
 	}
 
 	return count;
+}
+
+const std::string TGIDataHandler::stripNameOutOfChatLine(const std::string& commandName)
+{
+	//take from form name: chat
+	return commandName.substr(commandName.find(':'), commandName.size());
+}
+
+const std::string TGIDataHandler::stripExclamationPoint(const std::string& commandName)
+{
+	return commandName.substr(commandName.find('!'), commandName.size());
 }
 
 //fix all warnings by casting npos to (unsigned)

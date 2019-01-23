@@ -49,6 +49,18 @@ public:
 	const std::vector<std::string> getChangedData();
 	//returns current count of a command in this session
 	const unsigned int getCountOfCommand(const std::string& commandName);
+	/*
+	end ***IMPORTANT***
+	*/
+
+	/*
+	Take from format ChatterName: abcdefg -> abcdefg
+	*/
+	const std::string stripNameOutOfChatLine(const std::string& commandName);
+	/*
+	Take from format !abcdefg -> abcdefg
+	*/
+	const std::string stripExclamationPoint(const std::string& commandName);
 
 	void setFilePath(std::string path);
 
