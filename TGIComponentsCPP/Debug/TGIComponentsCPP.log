@@ -1,19 +1,5 @@
-﻿  configEditor.cpp
-c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\configeditor.cpp(69): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Compiling...
-  main.cpp
-c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\typelist.h(33): warning C4018: '<': signed/unsigned mismatch
-c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\typelist.h(42): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Compiling...
-  tgiCppAPI.cpp
-c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\typelist.h(33): warning C4018: '<': signed/unsigned mismatch
-c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\typelist.h(42): warning C4018: '<': signed/unsigned mismatch
-c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\tgicppapi.cpp(140): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  tgiDataHandler.cpp
-  tgiType.cpp
+﻿  tgiDataHandler.cpp
+c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\tgidatahandler.cpp(163): warning C4018: '<': signed/unsigned mismatch
+c:\users\tyler\documents\visual studio 2015\projects\tgicomponentscpp\tgicomponentscpp\tgidatahandler.cpp(46): warning C4715: 'FileWatcher::checkIfFileChanged': not all control paths return a value
   TGIComponentsCPP.vcxproj -> C:\Users\Tyler\documents\visual studio 2015\Projects\TGIComponentsCPP\Debug\TGIComponentsCPP.exe
   TGIComponentsCPP.vcxproj -> C:\Users\Tyler\documents\visual studio 2015\Projects\TGIComponentsCPP\Debug\TGIComponentsCPP.pdb (Partial PDB)

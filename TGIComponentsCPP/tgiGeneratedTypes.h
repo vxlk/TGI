@@ -11,10 +11,12 @@
 ///keep the count before trigger code the responsibility of the user. trigger is called every time the 
 ///command is found.  What happens is not my responsibility, but the responsibility of the user who
 ///implements trigger eg private var count -> trigger() { if count == 5 then trigger }
+
+//UPDATE AUTO-GEN!
 class speedTypeClass : public TGIType 
 {
 public:
-	speedTypeClass() : name("speed")	{}
+	speedTypeClass() : TGIType("speed")	{}
 	virtual const std::string& getCommandName() const { return this->name; }
 	virtual void trigger()
 	{
@@ -22,17 +24,17 @@ public:
 		std::cout << "hello world" << "\n";
 	}
 private:
-	std::string name;
+	//std::string name;
 };
 class anotherCommandTypeClass : public TGIType 
 {
 public:
-	anotherCommandTypeClass() : name("anotherCommand")	{}
+	anotherCommandTypeClass() : TGIType("anotherCommand")	{}
 	virtual const std::string& getCommandName() const { return this->name; }
 	virtual void trigger()
 	{
 		//Code that will be run when the command is triggered will go here
 	}
 private:
-	std::string name;
+	//std::string name;
 };

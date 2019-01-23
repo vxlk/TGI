@@ -26,6 +26,7 @@ std::string cleanCommandName(const std::string& commandName)
 	str.erase(std::remove(str.begin(), str.end(), '.'), str.end());
 	str.erase(std::remove(str.begin(), str.end(), ','), str.end());
 	str.erase(std::remove(str.begin(), str.end(), '`'), str.end());
+	str.erase(std::remove(str.begin(), str.end(), '\r'), str.end());
 
 	return str;
 }

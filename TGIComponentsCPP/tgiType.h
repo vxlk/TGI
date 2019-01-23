@@ -34,17 +34,18 @@ public:
 		return (unsigned int)name[index] > (unsigned int)rhs.getCommandName()[index];
 	}
 
+	//virtual const std::string& getName() const { return name; }
+	virtual void trigger() {}
+	//std::string name;
+protected:
+
+
 	TGIType(const std::string& _name)
 	{
 		name = _name;
 		//							base     child
 		castString = "dynamic_cast<TGIType>(TGIType);";
 	}
-
-	//virtual const std::string& getName() const { return name; }
-	virtual void trigger() {}
-
-protected:
 
 	const int getCount() const { return count; }
 	void incrementCount()	   { ++count; }
@@ -54,7 +55,7 @@ protected:
 	int count = 0;
 	//maybe have a count threshold in the class, but it complicates things
 
-private:
+//private:
 	std::string name;
 	std::string castString;
 };

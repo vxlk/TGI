@@ -37,6 +37,7 @@ TGICppAPI_WIN::TGICppAPI_WIN()
 	//init generator
 	this->generator = new TGITypeGenerator();
 	this->types = new TypeList();
+
 }
 
 /// CloseHandle( pi.hProcess ); to close

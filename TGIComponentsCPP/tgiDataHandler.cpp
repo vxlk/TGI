@@ -188,12 +188,15 @@ const unsigned int TGIDataHandler::getCountOfCommand(const std::string& commandN
 const std::string TGIDataHandler::stripNameOutOfChatLine(const std::string& commandName)
 {
 	//take from form name: chat
-	return commandName.substr(commandName.find(':'), commandName.size());
+	return commandName.substr(commandName.find(':')+1, commandName.size());
 }
 
 const std::string TGIDataHandler::stripExclamationPoint(const std::string& commandName)
 {
-	return commandName.substr(commandName.find('!'), commandName.size());
+	std::string toBeReturned = commandName.substr(commandName.find('!')+1, commandName.size());
+	if (toBeReturned.find('\r'))
+		toBeReturned.erase(std::remove(toBeReturned.begin(), toBeReturned.end(), '\r'), toBeReturned.end());
+	return toBeReturned;
 }
 
 //fix all warnings by casting npos to (unsigned)

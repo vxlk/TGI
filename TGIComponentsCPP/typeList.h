@@ -16,15 +16,16 @@ use regular vector for now...
 */
 
 ///MAKE THIS A SINGLETON
+///UPDATE AUTO-GEN!
 struct TypeList
 {
 	TypeList()
 	{
 		//List of types -> casted to each child
 
-		types.push_back(static_cast<anotherCommandTypeClass*>(new TGIType("anotherCommand")));
+		types.push_back(new anotherCommandTypeClass);
 
-		types.push_back(static_cast<speedTypeClass*>(new TGIType("speed")));
+		types.push_back(new speedTypeClass);
 		
 	}
 
