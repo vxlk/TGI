@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 !speed
 !anotherCommand
+=======
+!speed
+!anotherCommand
+>>>>>>> 097491726b552982cadd880f08a3a46382d039d2

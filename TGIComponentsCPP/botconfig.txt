@@ -1,5 +1,9 @@
 TGIChatBot
 irc.chat.twitch.tv
 6667
+<<<<<<< HEAD
 #void_nullptr
+=======
+#void_nullptr
+>>>>>>> 097491726b552982cadd880f08a3a46382d039d2
 oauth:1klswaqpqyv6jv7gsa4yxwt0liulyk
