@@ -1,0 +1,13 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-TGI-9493.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\Tyler\Documents\Unreal Projects\PluginCreator\Intermediate\Build\Win64\PluginCreatorEditor\Development\UnrealEd\SharedPCH.UnrealEd.h.obj"
+"C:\Users\Tyler\Documents\Unreal Projects\PluginCreator\Plugins\TGI\Intermediate\Build\Win64\UE4Editor\Development\TGI\Module.TGI.cpp.obj"
+"C:\Users\Tyler\Documents\Unreal Projects\PluginCreator\Plugins\TGI\Intermediate\Build\Win64\UE4Editor\Development\TGI\CMakeCCompilerId.c.obj"
+"C:\Users\Tyler\Documents\Unreal Projects\PluginCreator\Plugins\TGI\Intermediate\Build\Win64\UE4Editor\Development\TGI\PCLaunch.rc.res"
+/OUT:"C:\Users\Tyler\Documents\Unreal Projects\PluginCreator\Plugins\TGI\Intermediate\Build\Win64\UE4Editor\Development\TGI\UE4Editor-TGI-9493.lib"
